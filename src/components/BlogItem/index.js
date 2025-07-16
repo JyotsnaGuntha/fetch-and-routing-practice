@@ -1,24 +1,27 @@
-// Write your JS code here
-import './index.css'
 import {Link} from 'react-router-dom'
 
+import './index.css'
+
 const BlogItem = props => {
-  const {blogDetails} = props
-  const {id, title, author, imageUrl, avatarUrl, topic} = blogDetails
+  const {blogItemDetails} = props
+  const {id, imageUrl, topic, title, avatarUrl, author} = blogItemDetails
+
   return (
-    <Link to={`/blogs/${id}`} className="blog-item-link">
-      <div className="item-container">
-        <img src={imageUrl} alt="item" className="item-image" />
-        <div className="item-info">
-          <p className="topic">{topic}</p>
-          <h2 className="title">{title}</h2>
-          <div className="author-info">
-            <img className="avatar" src={avatarUrl} alt="avatar" />
-            <p className="author-name">{author}</p>
+    <li className="blog-item">
+      <Link to={`/blogs/${id}`} className="blog-item-link">
+        <div className="blog-item-container">
+          <img className="blog-item-image" src={imageUrl} alt={`item${id}`} />
+          <div className="blog-item-info">
+            <p className="blog-item-topic">{topic}</p>
+            <h1 className="blog-item-title">{title}</h1>
+            <div className="author-info">
+              <img className="avatar" src={avatarUrl} alt={`avatar${id}`} />
+              <p className="author-name">{author}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </li>
   )
 }
 
